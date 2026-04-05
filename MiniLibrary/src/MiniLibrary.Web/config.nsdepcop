@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<NsDepCopConfig>
+    <Allowed From="*" To="*" />
+
+    <Disallowed From="MiniLibrary.Web.Domain.*"
+				To="MiniLibrary.Web.Infrastructure.*" />
+    
+    <Disallowed From="MiniLibrary.Web.CartFeatures.*"
+				To="MiniLibrary.Web.Infrastructure.*" />
+    
+    <Disallowed From="MiniLibrary.Web.ProductFeatures.*"
+				To="MiniLibrary.Web.Infrastructure.*" />
+    
+    <Disallowed From="MiniLibrary.Web.Domain.OrderAggregate.*"
+				To="MiniLibrary.Web.Domain.CartAggregate.*" />
+
+    <AnalyzerConfig>
+        <IssueKind Name="IllegalDependency" Severity="Error" />
+    </AnalyzerConfig>
+</NsDepCopConfig>
