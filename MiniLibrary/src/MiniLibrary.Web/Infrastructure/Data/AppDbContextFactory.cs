@@ -23,10 +23,10 @@ public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
     var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
 
     // Try to get connection string from environment variable (ASP.NET Core format)
-    var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__AppDb")
-                          ?? "Server=localhost,1433;Database=AppDb_Design;User ID=sa;Password=Your$tr0ngP@ss!;TrustServerCertificate=true"; // Default SQL Server connection for design-time
+    var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection")
+                          ?? "Host=localhost;Port=5432;Database=minilibrary;Username=postgres;Password=postgres";
 
-    optionsBuilder.UseSqlServer(connectionString);
+    optionsBuilder.UseNpgsql(connectionString);
 
     return new AppDbContext(optionsBuilder.Options);
   }

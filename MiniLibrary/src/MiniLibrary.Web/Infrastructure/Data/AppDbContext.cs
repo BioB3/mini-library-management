@@ -1,20 +1,13 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
-using MiniLibrary.Web.Domain.CartAggregate;
-using MiniLibrary.Web.Domain.GuestUserAggregate;
-using MiniLibrary.Web.Domain.OrderAggregate;
-using MiniLibrary.Web.Domain.ProductAggregate;
+using MiniLibrary.Web.Domain.BookAggregate;
 
 namespace MiniLibrary.Web.Infrastructure.Data;
 public class AppDbContext(DbContextOptions<AppDbContext> options) : 
   DbContext(options)
 {
-  public DbSet<Product> Products => Set<Product>();
-  public DbSet<Cart> Carts => Set<Cart>();
-  public DbSet<CartItem> CartItems => Set<CartItem>();
-  public DbSet<GuestUser> GuestUsers => Set<GuestUser>();
-  public DbSet<Order> Orders => Set<Order>();
-  public DbSet<OrderItem> OrderItems => Set<OrderItem>();
+  public DbSet<Book> Books => Set<Book>();
+  public DbSet<BookCopy> BookCopies => Set<BookCopy>();
 
   protected override void OnModelCreating(ModelBuilder modelBuilder)
   {

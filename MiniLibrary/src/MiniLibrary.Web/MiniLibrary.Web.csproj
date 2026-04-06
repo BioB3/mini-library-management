@@ -30,8 +30,12 @@
     </PackageReference>
     
     <PackageReference Include="MailKit" />
+    
+    <PackageReference Include="MimeKit" />
     <PackageReference Include="NimblePros.Metronome" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
     <PackageReference Include="Scalar.AspNetCore" />
+    <PackageReference Include="Scriban" />
     <PackageReference Include="Serilog.AspNetCore" />
     <PackageReference Include="Serilog.Sinks.OpenTelemetry" />
 

@@ -1,10 +1,9 @@
 using Ardalis.GuardClauses;
 using MiniLibrary.Web.Infrastructure.Data;
-using MiniLibrary.Web.Infrastructure.Data.Queries;
-using MiniLibrary.Web.ProductFeatures.List;
 using Microsoft.EntityFrameworkCore;
 
 namespace MiniLibrary.Web.Infrastructure;
+
 public static class InfrastructureServiceExtensions
 {
   public static IServiceCollection AddInfrastructureServices(
@@ -22,14 +21,14 @@ public static class InfrastructureServiceExtensions
     services.AddDbContext<AppDbContext>((provider, options) =>
     {
       var eventDispatchInterceptor = provider.GetRequiredService<EventDispatchInterceptor>();
-      
-      options.UseSqlServer(connectionString);
+
+      options.UseNpgsql(connectionString,
+      b => b.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName));
       options.AddInterceptors(eventDispatchInterceptor);
     });
 
     services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>))
-           .AddScoped(typeof(IReadRepository<>), typeof(EfRepository<>))
-           .AddScoped<IListProductsQueryService, ListProductsQueryService>();
+          .AddScoped(typeof(IReadRepository<>), typeof(EfRepository<>));
 
     logger.LogInformation("{Project} services registered", "Infrastructure");
 
