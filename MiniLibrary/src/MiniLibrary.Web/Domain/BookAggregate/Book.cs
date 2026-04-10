@@ -17,11 +17,23 @@ public class Book : EntityBase<Book, BookId>, IAggregateRoot
     Isbn = isbn;
   }
 
+  public static Book Create(string Title, string Author, string Isbn)
+  {
+    return new Book(BookId.From(Guid.NewGuid()), Title, Author, Isbn);
+  }
+
   public void AddCopy(string serialNumber)
   {
     var copyId = BookCopyId.From(Guid.NewGuid());
     var newCopy = new BookCopy(copyId, serialNumber);
 
     _copies.Add(newCopy);
+  }
+
+  public void Update(string title, string author, string isbn)
+  {
+    Title = title;
+    Author = author;
+    Isbn = isbn;
   }
 }
