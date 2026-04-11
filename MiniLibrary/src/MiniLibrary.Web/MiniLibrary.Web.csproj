@@ -22,6 +22,8 @@
     <PackageReference Include="Azure.Identity" />
 
     <PackageReference Include="FastEndpoints" />
+
+    <PackageReference Include="FastEndpoints.Security" />
     <PackageReference Include="FastEndpoints.Swagger" />
     <PackageReference Include="Mediator.Abstractions" />
     <PackageReference Include="Mediator.SourceGenerator">
@@ -30,6 +32,8 @@
     </PackageReference>
     
     <PackageReference Include="MailKit" />
+    
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
     
     <PackageReference Include="MimeKit" />
     <PackageReference Include="NimblePros.Metronome" />

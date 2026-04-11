@@ -6,6 +6,7 @@ COPY MiniLibrary/Directory.Packages.props .
 COPY MiniLibrary/global.json .
 
 COPY MiniLibrary/src/MiniLibrary.Web/*.csproj ./src/MiniLibrary.Web/
+COPY MiniLibrary/src/MiniLibrary.ServiceDefaults/*.csproj ./src/MiniLibrary.ServiceDefaults/
 
 RUN dotnet restore ./src/MiniLibrary.Web/MiniLibrary.Web.csproj
 

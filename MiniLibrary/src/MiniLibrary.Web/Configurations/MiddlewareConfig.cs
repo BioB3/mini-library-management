@@ -1,6 +1,7 @@
 using Ardalis.ListStartupServices;
 using FastEndpoints;
 using FastEndpoints.Swagger;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using MiniLibrary.Web.Infrastructure.Data;
@@ -66,7 +67,8 @@ public static class MiddlewareConfig
       logger.LogInformation("Database migrations applied successfully.");
 
       // Seed data
-      await SeedData.InitializeAsync(context, logger);
+      var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+      await SeedData.InitializeAsync(context, roleManager, logger);
     }
     catch (Exception ex)
     {

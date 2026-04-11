@@ -30,6 +30,16 @@ public class Book : EntityBase<Book, BookId>, IAggregateRoot
     _copies.Add(newCopy);
   }
 
+  public bool RemoveCopy(BookCopyId copyId)
+  {
+    var copy = _copies.FirstOrDefault(c => c.Id == copyId);
+    if (copy == null)
+      return false;
+
+    _copies.Remove(copy);
+    return true;
+  }
+
   public void Update(string title, string author, string isbn)
   {
     Title = title;
